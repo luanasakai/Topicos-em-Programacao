@@ -1,4 +1,5 @@
-from Model import Produto, Venda
+from Model.Venda import Venda
+from Model.Produto import Produto
 
 class ItemVenda:
 

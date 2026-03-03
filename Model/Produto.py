@@ -1,10 +1,10 @@
 class Produto:
 
-    def __init__(self):
-        self._id = 0
-        self._nome = ""
-        self._preco = 0.0
-        self._qtde = 0
+    def __init__(self, id=0, nome="", preco=0.00, qtde=0):
+        self.id = id
+        self.nome = nome
+        self.preco = preco
+        self.qtde = qtde
 
     @property
     def id(self):
@@ -39,7 +39,7 @@ class Produto:
         self._qtde = qtde
 
     def __str__(self):
-        return (f"Código Produto: {self.id}, "
-                f"Nome: {self.nome}, "
-                f"Preço: {self.endereco}, "
-                f"Quantidade: {self.cidade}")
+        return (f" \nCódigo Produto: {self.id} "
+                f" \nNome: {self.nome}, "
+                f" \nPreço: {self.preco}, "
+                f" \nQuantidade: {self.qtde}")

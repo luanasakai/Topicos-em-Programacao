@@ -4,7 +4,32 @@ class ProdutoController:
     def __init__(self):
         self.lista_produto = []
 
-    def cadastrar_produto(self, produto: Produto):
+    def ler_id(self):
+        id = int(input('\n A seguir, preencha o Código do Produto: '))
+
+        return id
+
+    def ler_produto(self):
+        p = Produto()
+        print(f"\n A seguir, preencha as informações para Cadastrar um Produto: ")
+        p.id = int(input(' Código: '))
+        p.nome = input(' Nome: ')
+        p.preco = float(input(' Preço: '))
+        p.qtde = int(input(' Quantidade: '))
+
+        return p
+
+    def ler_atualizacao(self, p: Produto):
+
+        print(f"\n A seguir, preencha as informações para Atualizar um Produto: ")
+        p.nome = input(' Nome: ')
+        p.preco = float(input(' Preço: '))
+        p.qtde = int(input(' Quantidade: '))
+
+        return p
+
+    def cadastrar_produto(self):
+        produto = self.ler_produto()
         if self.buscar_produto(produto.id) is not None:
             return False
         self.lista_produto.append(produto)
@@ -44,7 +69,7 @@ class ProdutoController:
 
     def carregar_lista_arquivo(self):
         self.lista_produto = []
-        with open("produto.txt", "r") as arquivo:
+        with open("produtos.txt", "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split(",")
                 produto = Produto(dados[0], dados[1], dados[2], dados[3])

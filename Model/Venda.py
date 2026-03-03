@@ -1,4 +1,4 @@
-from Model import Cliente
+from Model.Cliente import Cliente
 
 class Venda:
 
@@ -32,6 +32,22 @@ class Venda:
     @valor_total.setter
     def valor_total(self, valor_total):
         self._valor_total = valor_total
+
+    @property
+    def cliente(self):
+        return self._cliente
+
+    @cliente.setter
+    def itens(self, cliente):
+        self._cliente = cliente
+
+    @property
+    def itens(self):
+        return self._itens
+
+    @itens.setter
+    def itens(self, itens):
+        self._itens = itens
 
     def __str__(self):
         return (f"Código Produto: {self.id}, "
