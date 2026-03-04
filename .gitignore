@@ -1,0 +1,10 @@
+# arquivos txt
+*.txt
+
+# python
+__pycache__/
+*.pyc
+
+# ambiente virtual
+venv/
+.env
