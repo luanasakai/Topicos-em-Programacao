@@ -3,12 +3,12 @@ from Model.Produto import Produto
 
 class ItemVenda:
 
-    def __init__(self):
-        self._id = 0
-        self._qtde = 0
-        self._valor_total = 0.0
-        self._venda = Venda()
-        self._produto = Produto()
+    def __init__(self, id=0, qtde=0, valor_total=0.00, venda=Venda(), produto=Produto()):
+        self._id = id
+        self._qtde = qtde
+        self._valor_total = valor_total
+        self._venda = venda
+        self._produto = produto
 
     @property
     def id(self):

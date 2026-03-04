@@ -1,12 +1,12 @@
 class Cliente:
 
-    def __init__(self):
-        self._id= 0
-        self._nome = ""
-        self._endereco = ""
-        self._cidade = ""
-        self._uf = ""
-        self._cep = ""
+    def __init__(self, id=0, nome="", endereco="", cidade="", uf="", cep=""):
+        self._id = id
+        self._nome = nome
+        self._endereco = endereco
+        self._cidade = cidade
+        self._uf = uf
+        self._cep = cep
 
     @property
     def id(self):
@@ -34,7 +34,7 @@ class Cliente:
 
     @property
     def cidade(self):
-        return self._qtde
+        return self._cidade
 
     @cidade.setter
     def cidade(self, cidade):
@@ -57,9 +57,9 @@ class Cliente:
         self._cep = cep
 
     def __str__(self):
-        return (f"Código Cliente: {self.id}, "
-                f"Nome: {self.nome}, "
-                f"Endereco: {self.endereco}, "
-                f"Cidade: {self.cidade}, "
-                f"UF: {self.uf}, "
-                f"CEP: {self.cep}")
+        return (f"\nCódigo Cliente: {self.id} "
+                f"\nNome: {self.nome} "
+                f"\nEndereco: {self.endereco} "
+                f"\nCidade: {self.cidade} "
+                f"\nUF: {self.uf} "
+                f"\nCEP: {self.cep}")

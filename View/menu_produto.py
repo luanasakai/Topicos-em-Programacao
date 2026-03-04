@@ -1,8 +1,7 @@
 from Controller.ProdutoController import ProdutoController
 
-def menu_produto():
+def menu_produto(controller):
 
-    controller = ProdutoController()
     while True:
         print(f"\n=============== [MENU PRODUTO] ===============")
         print(f"[OPERAÇÕES BÁSICAS]: ")
@@ -68,7 +67,7 @@ def menu_produto():
             lista = controller.listar_produto()
 
             if not lista:
-                print("\n Lista Vazia! Cadastre um Produto ou Carrega um Arquivo.")
+                print("\n Lista Vazia! Cadastre um Produto ou Carregue um Arquivo.")
             else:
                 for p in lista:
                     print(p)
@@ -81,4 +80,5 @@ def menu_produto():
             controller.carregar_lista_arquivo()
             print("\n Lista de Produtos Carregada com Sucesso!")
 
-menu_produto()
+if __name__ == "__main__":
+    menu_produto()

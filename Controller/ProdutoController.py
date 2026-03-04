@@ -72,5 +72,9 @@ class ProdutoController:
         with open("produtos.txt", "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split(",")
-                produto = Produto(dados[0], dados[1], dados[2], dados[3])
+                produto = Produto(
+                    int(dados[0]),
+                    dados[1],
+                    float(dados[2]),
+                    int(dados[3]))
                 self.lista_produto.append(produto)
