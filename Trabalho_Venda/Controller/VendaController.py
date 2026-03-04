@@ -3,6 +3,8 @@ from Model.ItemVenda import ItemVenda
 from Model.Produto import Produto
 from Controller.ClienteController import ClienteController
 from Controller.ProdutoController import ProdutoController
+from util.persistir_pasta_dados import caminho_arquivo
+import os
 
 class VendaController:
     def __init__(self, cliente_controller, produto_controller):
@@ -187,14 +189,21 @@ class VendaController:
         return False
 
     def gravar_lista_arquivo(self):
-        with open("venda.txt", "w") as arquivo:
+        with open(caminho_arquivo("vendas.txt"), "w") as arquivo:
             for venda in self.lista_venda:
                 arquivo.write(
                     f"{venda.id},{venda.data},{venda.valor_total},{venda.cliente.id},{venda.itens}\n")
 
     def carregar_lista_arquivo(self):
         self.lista_venda = []
-        with open("venda.txt", "r") as arquivo:
+
+        caminho = caminho_arquivo("vendas.txt")
+
+        if not os.path.exists(caminho):
+            print("Arquivo não encontrado!")
+            return
+
+        with open(caminho, "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split(",")
                 id_venda = int(dados[0])

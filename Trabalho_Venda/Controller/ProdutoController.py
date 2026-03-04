@@ -1,4 +1,6 @@
 from Model.Produto import Produto
+from util.persistir_pasta_dados import caminho_arquivo
+import os
 
 class ProdutoController:
     def __init__(self):
@@ -62,14 +64,21 @@ class ProdutoController:
         return False
 
     def gravar_lista_arquivo(self):
-        with open("produtos.txt", "w") as arquivo:
+        with open(caminho_arquivo("produtos.txt"),"w") as arquivo:
             for produto in self.lista_produto:
                 arquivo.write(
                     f"{produto.id},{produto.nome},{produto.preco},{produto.qtde}\n")
 
     def carregar_lista_arquivo(self):
         self.lista_produto = []
-        with open("produtos.txt", "r") as arquivo:
+
+        caminho = caminho_arquivo("produtos.txt")
+
+        if not os.path.exists(caminho):
+            print("Arquivo não encontrado!")
+            return
+
+        with open(caminho, "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split(",")
                 produto = Produto(

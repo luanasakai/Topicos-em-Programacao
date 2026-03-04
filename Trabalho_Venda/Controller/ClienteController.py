@@ -1,4 +1,6 @@
 from Model.Cliente import Cliente
+from util.persistir_pasta_dados import caminho_arquivo
+import os
 
 class ClienteController:
     def __init__(self):
@@ -66,14 +68,21 @@ class ClienteController:
         return False
 
     def gravar_lista_arquivo(self):
-        with open("clientes.txt", "w") as arquivo:
+        with open(caminho_arquivo("clientes.txt"), "w") as arquivo:
             for cliente in self.lista_clientes:
                 arquivo.write(
                     f"{cliente.id},{cliente.nome},{cliente.endereco},{cliente.cidade},{cliente.uf},{cliente.cep}\n")
 
     def carregar_lista_arquivo(self):
         self.lista_clientes = []
-        with open("clientes.txt", "r") as arquivo:
+
+        caminho = caminho_arquivo("clientes.txt")
+
+        if not os.path.exists(caminho):
+            print("Arquivo não encontrado!")
+            return
+
+        with open(caminho, "r") as arquivo:
             for linha in arquivo:
                 dados = linha.strip().split(",")
                 cliente = Cliente(
